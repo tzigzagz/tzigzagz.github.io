@@ -1,7 +1,7 @@
 tZigZagZ Read Me
 ===
 
-[Web Page View]( tzigzagz.github.io/index.html )  
+[Web Page View]( http://tzigzagz.github.io/index.html )  
 [Source Code View]( https://github.com/tzigzagz/tzigzagz.github.io )
 
 _New ways of visualizing data_

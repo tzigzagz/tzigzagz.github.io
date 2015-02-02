@@ -1,7 +1,7 @@
 Tzzz Grid View
-===s
+===
 
-[Tzzz Grid View web page]( http://tzigzagz.github.io/tzzz-grid-view/r1/tzzz-grid-view-r1.html )  
+[Tzzz Grid View web page]( http://tzigzagz.github.io/tzzz-grid-view/latest/ )  
 [Tzzz Grid View source code]( https://github.com/tzigzagz/tzigzagz.github.io/tree/master/tzzz-grid-view )  
 [Tzzz Grid View read me]( http://tzigzagz.github.io/tzzz-grid-view/index.html )
 
