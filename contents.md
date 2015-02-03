@@ -6,7 +6,7 @@
 _New ways of visualizing data_
 
 [tZigZagZ Read Me]( #index.html# )  
-[Working Spec for Tzz]( #working-spec-for-tzz.html# )  
+[Working Spec for Tzzz]( #working-spec-for-tzz.html# )  
 [Condensed Summary of Official Zigzag]( #condensed-summary-of-official-zigzag.html# )
 
 ##S&P 500 Data Set
