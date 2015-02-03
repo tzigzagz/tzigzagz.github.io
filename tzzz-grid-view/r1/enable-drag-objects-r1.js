@@ -25,6 +25,12 @@
 		renderer.domElement.addEventListener( 'mouseup', onDocumentMouseUp, false );
 
 
+//		parent.window.addEventListener( 'keyup', onKeyUp, false );
+
+		function onKeyUp( event ) {
+console.log( event );
+		}
+
 		function onDocumentMouseMove( event ) {
 
 			event.preventDefault();

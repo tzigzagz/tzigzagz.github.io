@@ -83,11 +83,17 @@
 		VH.dragcontrols.onDragged = function() { console.log( 'ID', VH.selected.id ); }
 
 		if ( window.self === window.top ) {
+
 			window.addEventListener( 'keyup', onKeyUp, false );	
+
 		} else {
-			renderer.domElement.addEventListener( 'keyup', onKeyUp, false );	
+
+		parent.window.addEventListener( 'keyup', onKeyUp, false );
+			//VH.ifr.contentWindow.addEventListener( 'keyup', onKeyUp, false );	
+			//window.frames[0].document.addEventListener( 'keyup', onKeyUp, false );	
 		}
 
+//			
 	}
 
 	

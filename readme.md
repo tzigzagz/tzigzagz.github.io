@@ -13,7 +13,7 @@ _New ways of visualizing data_
 ### Tzzz Grid View ~ SP500
 
 [[O]]( http://tzigzagz.github.io/tzzz-grid-view/r1/tzzz-grid-view-r1.html )
-[Tzzz Grid View web page]( http://tzigzagz.github.io/browse-tzigzagz-files.html#./tzzz-grid-view/r1/tzzz-grid-view-r1.html#noGrid#noGround )
+[Tzzz Grid View web page]( #./tzzz-grid-view/r1/tzzz-grid-view-r1.html#noGrid#noGround )
 
 [[O]]( http://tzigzagz.github.io/tzzz-grid-view/index.html )
 [Tzzz Grid View read me]( http://tzigzagz.github.io/browse-tzigzagz-files.html#./tzzz-grid-view/index.html# )
