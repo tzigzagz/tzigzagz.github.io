@@ -1,11 +1,13 @@
 tZigZagZ Read Me
 ===
 
+[Web Page View]( http://tzigzagz.github.io/index.html )  
+[Source Code View]( https://github.com/tzigzagz/tzigzagz.github.io )
 
 
 ## Copyright Notice for All tZigZagZ Works
 
-Copyright &copy; tZigZagZ authors
+Copyright &copy; 2015 tZigZagZ authors
 
 ## License for All tZigZagZ Works
 

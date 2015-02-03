@@ -15,7 +15,7 @@
 
 	text = converter.makeHtml( text );
 
-	document.body.style.cssText = ' font: bold 12pt monospace; ';
+	document.body.style.cssText = ' font: bold 12pt monospace; max-width: 900px';
 
 	var info = document.body.appendChild( document.createElement( 'div' ) );
 	info.innerHTML = text;
