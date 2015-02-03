@@ -81,8 +81,12 @@
 		VH.dragcontrols = new VH.DragObjects( objects );
 
 		VH.dragcontrols.onDragged = function() { console.log( 'ID', VH.selected.id ); }
-		
-		window.addEventListener( 'keyup', onKeyUp, false );		
+
+		if ( window.self === window.top ) {
+			window.addEventListener( 'keyup', onKeyUp, false );	
+		} else {
+			renderer.domElement.addEventListener( 'keyup', onKeyUp, false );	
+		}
 
 	}
 
