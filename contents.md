@@ -32,7 +32,7 @@ TBD
 ### Tzzz Stick View ~ SP500
 
 [[O]]( http://tzigzagz.github.io/tzzz-stick-view-dji/r1/tzzz-stick-view-dji-r1.html )
-[Tzzz Stick View ~ Dow Jones Industrials]( http://tzigzagz.github.io/browse-tzigzagz-files.html#./tzzz-stick-view-dji/r1/tzzz-stick-view-dji-r1.html#noGrid#noGround )
+[Tzzz Stick View ~ Dow Jones Industrials]( #./tzzz-stick-view-dji/r1/tzzz-stick-view-dji-r1.html#noGrid#noGround )
 
 [[O]]( http://tzigzagz.github.io/tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html )
 [Tzzz Stick View SP500 web page]( http://tzigzagz.github.io/browse-tzigzagz-files.html#./tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html#noGrid#noGround )
