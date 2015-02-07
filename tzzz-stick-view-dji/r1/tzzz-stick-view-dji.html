@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang=en >
 <head>
-<title>tzzz-stick-view-sp500 R1</title>
+<title>tzzz-stick-view-djo R1</title>
 <meta charset=utf-8 />
 <meta name=viewport content=width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0 />
 </head>
@@ -13,7 +13,7 @@
 	var info, renderer, scene, camera, controls, stats, light;
 
 	var VH = VH || {};
-	var sp500, sp500trades;
+	var dji;
 	var updateTime, updateText, updateTextPrevious;
 	var  sp500ticks = [];
 
@@ -199,7 +199,7 @@
 //Iframe
 		ifr = document.body.appendChild( document.createElement( 'iframe' ) );
 		ifr.style.display = 'none';
-		ifr.src = 'load-wikipedia-data-via-google-spreadsheet.html';
+		ifr.src = 'load-wikipedia-data-via-google-spreadsheet-dji.html';
 
 // Events
 		renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -211,13 +211,15 @@
 
 		geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
-		for (var i = 0; i < sp500.length; i++) {
+		colors = colorful( dji.length );
+
+		for (var i = 0; i < dji.length; i++) {
 
 			symbol = new THREE.Object3D();
 
 			material = new THREE.MeshPhongMaterial( {
-				color: colors[ sp500[i][3] ], // 0xffffff * Math.random(),
-				ambient: colors[ sp500[i][3] ], //0xffffff * Math.random(),
+				color: colors[ dji[i][3] ], // 0xffffff * Math.random(),
+				ambient: colors[ dji[i][3] ], //0xffffff * Math.random(),
 //				opacity: Math.random(),
 				specular: 0xffffff * Math.random(),
 				shading: THREE.FlatShading,
@@ -226,16 +228,16 @@
 			} );
 
 			mesh = new THREE.Mesh( geometry, material );
-			mesh.name = mesh.userData.symbol = sp500[i][0];
-			mesh.userData.name = sp500[i][1];
-			mesh.userData.sector = sp500[i][2];
-			mesh.userData.sectorID = sp500[i][7];
+			mesh.name = mesh.userData.symbol = dji[i][0];
+			mesh.userData.name = dji[i][1];
+			mesh.userData.sector = dji[i][2];
+			mesh.userData.sectorID = dji[i][3];
 //subindustry
 //clic
-			mesh.userData.volumeAvg = sp500[i][3];
-			mesh.userData.marketCap = sp500[i][4];
-			scale = 2 + 0.0000000002 * sp500[i][4];
-//			mesh.position.set( 10 * sp500[i][2], 0.5 * scale, -200 * Math.log( 1 + sp500[i][4] / sp500[i][3] ) + 100 );
+			mesh.userData.volumeAvg = dji[i][4];
+			mesh.userData.marketCap = dji[i][5];
+			scale = 2 + 0.0000000002 * dji[i][5];
+//			mesh.position.set( 10 * dji[i][2], 0.5 * scale, -200 * Math.log( 1 + dji[i][4] / dji[i][3] ) + 100 );
 			mesh.position.set( 0, 0.5 * scale, 0 );
 			mesh.scale.y = scale;
 			mesh.castShadow = true;
@@ -255,15 +257,16 @@
 			scene.add( symbol );
 		}
 
-		ifr.src = 'load-google-data-via-google-spreadsheet.html';
+//		ifr.src = 'load-google-data-via-google-spreadsheet-dji.html';
 
 		animate();
-
+		updateSymbols();
 	}
 
 	function drawSprite( text, scale, color, x, y, z) {
 
 		texture = canvasText( text, color );
+		texture.minFilter = texture.magFilter = THREE.NearestFilter;
 		var spriteMaterial = new THREE.SpriteMaterial( { map: texture, useScreenCoordinates: false, opacity: 1 } );
 		var sprite = new THREE.Sprite( spriteMaterial );
 		sprite.position.set( x, y, z ) ;
@@ -310,15 +313,15 @@
 
 		var pos;
 
-		for ( var i = 0; i < sp500.length; i++ ) {
+		for ( var i = 0; i < dji.length; i++ ) {
 
-			touchables[i].userData.changePct = sp500trades[i][0];
-			touchables[i].userData.volume = sp500trades[i][1];
-			pos = 10 * sp500trades[i][0];
+			touchables[i].userData.changePct = dji[i][6];
+			touchables[i].userData.volume = dji[i][7];
+			pos = 10 * dji[i][6];
 			pos = pos > 150 ? 150 : pos;
 			pos = pos < -150 ? -150 : pos;
 			symbols[i].position.x = pos; 
-			pos = -200 * Math.log( 1 + sp500trades[i][1] / sp500[i][6] );
+			pos = -200 * Math.log( 1 + dji[i][4] / dji[i][7] );
 			symbols[i].position.z = pos < -400 ? -400 : pos;
 		}
 
@@ -327,7 +330,7 @@
 			note = '<br>no update'; 
 		} else {
 			note = '<br><span style=color:red>update</span>';
-			sp500ticks.push( sp500trades );
+			sp500ticks.push( dji );
 		}
 		msg1.innerHTML = updateTime + note;
 		msg2.innerHTML = 'ticks:' + sp500ticks.length;
@@ -415,6 +418,21 @@
 	function onDocumentMouseDown( event ) {
 
 		headsUp.style.display = 'none';
+
+	}
+
+	function colorful( count ) {
+
+		var colors = [];
+		var delta = 360 / count;
+
+		for ( var i = 0; i < count; i++ ) {
+
+			colors.push( i * delta );
+
+		}
+
+		return colors;
 
 	}
 
