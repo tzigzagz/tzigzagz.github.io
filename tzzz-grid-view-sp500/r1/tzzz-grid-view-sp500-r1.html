@@ -147,7 +147,7 @@ console.log( obj, obj.name );
 		
 		item = 0;
 		vertical = 100;
-console.log( 'draw symbols', all, filter, sp500[ 3 ][ 2 ] );		
+//console.log( 'draw symbols', all, filter, sp500[ 3 ][ 2 ] );		
 		for ( var y = 0; y < sp500.length; y++ ) {
 //		for ( var y = 0; y < 20; y++ ) {
 
@@ -259,6 +259,7 @@ console.log( 'draw symbols', all, filter, sp500[ 3 ][ 2 ] );
 		}
 
 		var texture = new THREE.Texture( canvas );
+		texture.minFilter = texture.magFilter = THREE.NearestFilter;
 		texture.needsUpdate = true;
 		return texture;
 	}

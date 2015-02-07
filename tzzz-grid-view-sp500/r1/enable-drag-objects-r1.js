@@ -1,11 +1,11 @@
 // 2014-12-29 ~ vA3C Authors ~ MIT License
-// Sources: 
+// Sources:
 // https://github.com/mrdoob/three.js/blob/master/examples/webgl_interactive_draggablecubes.html
 // https://github.com/mrdoob/three.js/blob/master/examples/webgl_interactive_cubes.html
 
 	var VH = VH || {};
 	var intersected;
-		
+
 	VH.DragObjects = function( objects ) {
 
 		me = this;
@@ -69,7 +69,7 @@ console.log( event );
 						} else if ( intersected.material.color ) {
 
 							deHighlight( intersected );
-							
+
 							intersected.material.color.setHex( intersected.currentHex );
 							intersected.scale.y = intersected.currentHeight;
 
@@ -87,7 +87,7 @@ console.log( event );
 						intersected.material.emissive.setHex( 0xff0000 );
 
 					} else if ( intersected.material.color ) {
-					
+
 highlight( intersected )
 
 
@@ -148,9 +148,9 @@ highlight( intersected )
 //				offset.copy( intersects[ 0 ].point ).sub( plane.position );
 
 				document.body.style.cursor = 'move';
-				
+
 				controls.target = intersects[ 0 ].point;
-				
+
 				camera.lookAt( intersects[ 0 ].point );
 
 			}
@@ -185,29 +185,29 @@ highlight( intersected )
 
 	}
 
-	
+
 	function highlight( mesh ) {
 
 		mesh.currentHex = mesh.material.color.getHex();
-		mesh.currentHeight = mesh.scale.y;		
-		
+		mesh.currentHeight = mesh.scale.y;
+
 		intersected.material.color.setHex( 0xffff00 );
 		var s = intersected.scale;
 		intersected.scale.y = 1.5 * s.y;
-						
-console.log( 'highlight', intersected.name );						
+
+//console.log( 'highlight', intersected.name );
 
 	}
 
 	function deHighlight( mesh ) {
 
 		mesh.material.color.setHex( mesh.currentHex );
-		mesh.scale.y = mesh.currentHeight;	
+		mesh.scale.y = mesh.currentHeight;
 
-console.log( 'dehighlight', intersected.name );	
-		
+//console.log( 'dehighlight', intersected.name );
+
 	}
-	
+
 	// Enable every mesh in a scene to become draggable
 
 	VH.enableDragObjects = function() {
@@ -242,4 +242,4 @@ console.log( 'dehighlight', intersected.name );
 
 	}
 
-	
+
