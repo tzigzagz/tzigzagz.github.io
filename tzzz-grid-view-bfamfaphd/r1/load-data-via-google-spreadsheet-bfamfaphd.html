@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<title>load-data-via-google-spreadsheet-bfamfaphd.html</title>
+<meta charset=utf-8 />
+<!--
+<meta http-equiv=refresh content=20 />
+-->
+</head>
+<body>
+<script>
+
+	var bfamfaphd = [];
+	var types = [];
+
+	var xmlhttp;
+
+	var fname = 'https://spreadsheets.google.com/feeds/list/1KJxA7k9kGASD2NEqWcYBR9i9fM68duI_sm6ttbd-EAE/1/public/values?alt=json';
+
+	init();
+
+	function init() {
+
+		document.body.style.cssText = 'font: 600 12pt monospace;' ;
+
+		var info = document.body.appendChild( document.createElement( 'div' ) );
+		info.innerHTML = '<h1><a href="" >' + document.title + '</a></h1>' +
+			'<div id=msg1>1</div>' +
+			'<div id=msg2>2</div>';
+
+		loadJSON();
+
+	}
+
+	function loadJSON() {
+
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.open( 'GET', fname + '&t=' + Math.random(), true );
+		xmlhttp.onload = callbackJSON;
+		xmlhttp.send( null );
+
+	}
+
+	function callbackJSON() {
+
+		var data = xmlhttp.responseText;
+		data = JSON.parse( data );
+		var entries = data.feed.entry;
+		var txt = '';
+//		var entry, symbol;
+
+		for ( var i = 0; i < entries.length; i++  ) {
+
+			entry = entries[i];
+			type = entry.gsx$job.$t.substr( 0, 3);
+
+			symbol = [
+				type,
+				entry.gsx$job.$t.substr( 4 ),
+				parseInt( entry.gsx$number.$t, 10 ),
+				parseFloat( entry.gsx$percent.$t )
+
+			];
+
+			if ( types.indexOf( type ) === -1 ) {
+
+				types.push( type );
+
+			}
+
+			bfamfaphd.push( symbol );
+			txt += i + ' ' + symbol.toString() + '<br>';
+
+		}
+
+		if ( window.self !== window.top ) {
+
+			parent.bfamfaphd = bfamfaphd;
+			parent.types = types;
+			parent.msg1.innerHTML = new Date();
+			parent.msg2.innerHTML = txt;
+			parent.drawSymbols();
+
+		} else {
+
+			msg1.innerHTML = new Date() + '<br>' + types.slice( 1, -1 );
+			msg2.innerHTML = txt;
+		}
+
+	}
+
+</script>
+</body>
+</html>
