@@ -5,11 +5,29 @@ tZigZagZ Read Me
 [Source Code View]( https://github.com/tzigzagz/tzigzagz.github.io )  <scan style=display:none ><< You are now probably here.</scan>
 -->
 
-## Copyright Notice for All tZigZagZ Works
+This web site may be considered as the lab equipment for thought experiments.
+
+It is a work-in-progress being built in the hope that Ted, in looking at the various widgets and effects, might say:
+"That thing is heading a direction I am interested in pursuing. Now can you make them thorgle and wimpser?" - or whatever.
+
+The font used everywhere is Courier. It's the fixed-space font programmers use.  
+The experiments tend to have an over-exuberance of color. It's the opposite of the the black and white programmers use.
+
+So it goes.
+
+### Ted Nelson
+
+* [Wikipedia]( http://en.wikipedia.org/wiki/Ted_Nelson )
+* [Home Page]( http://ted.hyperland.com/ )
+* [Project Xanadu]( http://www.xanadu.net/ )
+
+***
+
+### Copyright Notice for All tZigZagZ Works
 
 Copyright &copy; 2015 tZigZagZ authors
 
-## License for All tZigZagZ Works
+### License for All tZigZagZ Works
 
 The MIT License
 

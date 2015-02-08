@@ -1,9 +1,9 @@
-Tzzz Grid View
+Tzzz Grid View ~ S&P 500
 ===
 
-[Tzzz Grid View web page]( http://tzigzagz.github.io/tzzz-grid-view/latest/ )  
-[Tzzz Grid View source code]( https://github.com/tzigzagz/tzigzagz.github.io/tree/master/tzzz-grid-view )  
-[Tzzz Grid View read me]( http://tzigzagz.github.io/tzzz-grid-view/index.html )
+## Sources
+[Wikipedia List of S&P 500 companies]( http://en.wikipedia.org/wiki/List_of_S%26P_500_companies )
+
 
 ### Usage
 
@@ -19,13 +19,14 @@ Tzzz Grid View
 * Click underlined title to reload. This action also resets the display
 * Colors indicate industry sector
 
-### Notes
+### Notes & Road Map
 
 * The scrollable list of constituent data under the title is just for debugging
 * The current data set is just a 2D grid. An imminent future release will add daily trading data for, say, the previous month. 
 The display of this data will use the third dimension
 * Future releases will add the ability for the display to update camera position as you scroll up and down 
-
+* The S&P 500 is a very [heh, heh] rich source of data. There are may sources and many possible ways of remixing data.
+	* For example: how should and could the grid views talk to the stick views?
 
 
 

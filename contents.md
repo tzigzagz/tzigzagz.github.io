@@ -24,7 +24,7 @@ _Start here_
 
 [[O]]( http://tzigzagz.github.io/tzzz-grid-view-sp500/r1/tzzz-grid-view-sp500-r1.html )
 [Tzzz Grid View ~ S&P 500]( #./tzzz-grid-view-sp500/r1/tzzz-grid-view-sp500-r1.html#noGrid#noGround )  
-[Tzzz Grid View ~ S&P 500 Read Me]( #./data/sp500/readme.md# )  
+[Tzzz Grid View ~ S&P 500 Read Me]( #./tzzz-grid-view-sp500/readme.md# )  
 _Heavy use of computer resources. Takes time to load._
 
 [[O]]( http://tzigzagz.github.io/tzzz-grid-view-bfamfaphd/r1/tzzz-grid-view-bfamfaphd-r1.html )
@@ -33,7 +33,7 @@ _Heavy use of computer resources. Takes time to load._
 _Heavy use of computer resources. Takes time to load._
 
 </details>
-<details open>
+<details>
 <summary><h3>Tzzz Axis View</summary>
 
 TBD
@@ -41,14 +41,17 @@ TBD
 
 </details>
 <details open>
-<summary><h3>Tzzz Stick View ~ SP500</summary>
+<summary><h3>Tzzz Stick View</summary>
 
 [[O]]( http://tzigzagz.github.io/tzzz-stick-view-dji/r1/tzzz-stick-view-dji-r1.html )
 [Tzzz Stick View ~ Dow Jones Industrials]( #./tzzz-stick-view-dji/r1/tzzz-stick-view-dji-r1.html#noGrid#noGround )
+[Tzzz Stick View ~ DJI Read Me]( #./tzzz-stick-view-dji/readme.md# )  
+_Start here_
 
 [[O]]( http://tzigzagz.github.io/tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html )
-[Tzzz Stick View SP500 web page]( http://tzigzagz.github.io/browse-tzigzagz-files.html#./tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html#noGrid#noGround )
+[Tzzz Stick View S&P 500 web page]( http://tzigzagz.github.io/browse-tzigzagz-files.html#./tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html#noGrid#noGround )
+[Tzzz Stick View ~ S&P 500 Read Me]( #./tzzz-stick-view-sp500/readme.md# )  
+_If this works for you at 60 frames per second, you are good to go for the future..._
 </details>
-
 
 <style>h3 { display:inline; }</style>

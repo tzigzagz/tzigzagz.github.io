@@ -1,7 +1,12 @@
 Tzzz Grid View ~ BAMFAPhD Read Me
 ===
 
-## An interesting Fail?
+Data acquired from and remixed for these interesting people:
+
+[BMAMFAPhD]( http://bfamfaphd.com/ )
+
+
+## A Remix of the US Census Bureau Jobs Data ~ An Interesting Fail?
 
 ### The Challenge
 
