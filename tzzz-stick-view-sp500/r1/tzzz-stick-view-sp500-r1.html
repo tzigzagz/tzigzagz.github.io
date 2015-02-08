@@ -35,7 +35,7 @@
 
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'background-color: #ddd; height: ' + ( 0.25 * window.innerHeight ) + 'px;' +
-			'margin: 10px; opacity: 0.5; overflow: auto; padding: 10px; position: absolute; ';
+			'margin: 10px; max-width: ' + ( 0.30 * window.innerWidth ) + 'px;' + 'opacity: 0.5; overflow: auto; padding: 10px; position: absolute; ';
 		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
 			'<div id=msg1 ></div>' +
 			'<div id=msg2 ></div>' +
