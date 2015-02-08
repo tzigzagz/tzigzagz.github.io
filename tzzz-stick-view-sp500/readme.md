@@ -19,6 +19,15 @@ _SP500 - latest revision_ / [Full Screen]( http://jaanga.github.io/sp500/latest/
 <!-- a statement of a rationale, applicable now as well as in the future -->
 View market symbols in a non-reductionist manner
 
+Positions should update every 40 seconds or so when the markets are open.
+
+Move your mouse over a stick to see its details.
+
+* While cursor is over white space, hold down your left mouse button and drag to rotate the model
+* Use the mouse-wheel to zoom in and out
+* While cursor is over white space, hold down your right mouse button and drag to pan the model
+* Move mouse cursor over any 'placard' in order to highlight that placard and display the heads up display
+
 ### Vision  
 <!--  a descriptive picture of a desired future state -->
 
