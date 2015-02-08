@@ -1,9 +1,9 @@
 tZigZagZ Read Me
 ===
-
+<!--
 [Web Page View]( http://tzigzagz.github.io/index.html )  <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
 [Source Code View]( https://github.com/tzigzagz/tzigzagz.github.io )  <scan style=display:none ><< You are now probably here.</scan>
-
+-->
 
 ## Copyright Notice for All tZigZagZ Works
 
