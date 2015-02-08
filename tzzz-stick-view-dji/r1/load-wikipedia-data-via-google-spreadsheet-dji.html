@@ -3,12 +3,15 @@
 <head>
 <title>load-wikipedia-data-via-google-spreadsheet-dji.html</title>
 <meta charset=utf-8 />
-<!--
+
 <meta http-equiv=refresh content=20 />
--->
+
 </head>
 <body>
 <script>
+
+	var dji = [];
+	var types = [];
 
 	var xmlhttp;
 
@@ -43,9 +46,8 @@
 		var data = xmlhttp.responseText;
 		data = JSON.parse( data );
 		var entries = data.feed.entry;
-		dji = [];
 		var txt = '';
-//		var entry, symbol;
+		var entry, symbol;
 
 		for ( var i = 0; i < entries.length; i++  ) {
 
@@ -63,6 +65,12 @@
 
 			];
 
+			if ( types.indexOf( entry.gsx$industry.$t ) === -1 ) {
+
+				types.push( entry.gsx$industry.$t );
+
+			}
+
 			dji.push( symbol );
 			txt += i + ' ' + symbol.toString() + '<br>';
 
@@ -71,9 +79,10 @@
 		if ( window.self !== window.top ) {
 
 			parent.dji = dji;
-			parent.msg1.innerHTML = new Date();
-			parent.msg2.innerHTML = txt;
-			parent.drawSymbols();
+			parent.industriesCount = types.length;
+			parent.updateTime = new Date();
+			parent.updateText = txt;
+			parent.updateSymbols();
 
 		} else {
 
