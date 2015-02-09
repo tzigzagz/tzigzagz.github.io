@@ -1,4 +1,4 @@
-tZigZagZ Read Me
+Ted's tZigZagZ Read Me
 ===
 <!--
 [Web Page View]( http://tzigzagz.github.io/index.html )  <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
