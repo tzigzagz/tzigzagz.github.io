@@ -17,6 +17,7 @@ So it goes.
 * [Wikipedia]( http://en.wikipedia.org/wiki/Ted_Nelson )
 * [Home Page]( http://ted.hyperland.com/ )
 * [Project Xanadu]( http://www.xanadu.net/ )
+* [YouTube Channel]( https://www.youtube.com/user/TheTedNelson )
 
 ***
 
