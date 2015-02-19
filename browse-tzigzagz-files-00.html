@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang=en >
+<head>
+<title>View tZigZagZ Files</title>
+<meta charset=utf-8 />
+<meta name=viewport content=width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0 />
+</head>
+<body>
+<script src=http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js ></script>
+
+<script src=http://va3c.github.io/viewer/va3c-hacker/r3-0dev/va3c-hacker-r3-0dev.js ></script>
+<!--
+<script src=../va3c.github.io/viewer/va3c-hacker/r3-0dev/va3c-hacker-r3-0dev.js ></script>
+-->
+<script>
+
+//	var VH = VH || {};
+
+	var hackerPrefix = 'http://va3c.github.io/viewer/va3c-hacker/r3-0dev/';
+
+//	var hackerPrefix = '../va3c.github.io/viewer/va3c-hacker/r3-0dev/';
+
+	VH.initHackette();
+
+	VH.displayMarkdown( './contents.md', menuRight );
+
+	location.hash = 'readme.md#';
+
+
+</script>
+</body>
+</html>

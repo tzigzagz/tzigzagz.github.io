@@ -1,13 +1,10 @@
 Ted's tZigZagZ Read Me
 ===
-<!--
-[Web Page View]( http://tzigzagz.github.io/index.html )  <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
-[Source Code View]( https://github.com/tzigzagz/tzigzagz.github.io )  <scan style=display:none ><< You are now probably here.</scan>
--->
 
-This web site may be considered as the lab equipment for thought experiments.
 
-It is a work-in-progress being built in the hope that Ted, in looking at the various widgets and effects, might say:
+This web site may be considered as the lab equipment for thought experiments expressed by Ted Nelson.
+
+It is a work-in-progress being built in the hope that Ted, in looking at the various widgets and effects shown here, might say:
 "That thing is heading a direction I am interested in pursuing. Now can you make them thorgle and wimpser?" - or whatever.
 
 The font used everywhere is Courier. It's the fixed-space font programmers use.  
@@ -15,7 +12,7 @@ The experiments tend to have an over-exuberance of color. It's the opposite of t
 
 So it goes.
 
-### Ted Nelson
+### About Ted Nelson
 
 * [Wikipedia]( http://en.wikipedia.org/wiki/Ted_Nelson )
 * [Home Page]( http://ted.hyperland.com/ )
