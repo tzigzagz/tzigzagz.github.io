@@ -14,10 +14,10 @@ So it goes.
 
 ### About Ted Nelson
 
-* [Wikipedia]( http://en.wikipedia.org/wiki/Ted_Nelson )
-* [Home Page]( http://ted.hyperland.com/ )
-* [Project Xanadu]( http://www.xanadu.net/ )
-* [YouTube Channel]( https://www.youtube.com/user/TheTedNelson )
+* <a href=http://en.wikipedia.org/wiki/Ted_Nelson target=_blank >Wikipedia</a>
+* <a href=http://ted.hyperland.com/  target=_blank >Home Page</a>
+* <a href=http://www.xanadu.net/ target=_blank >Project Xanadu</a>
+* <a href=https://www.youtube.com/user/TheTedNelson target=_blank >YouTube Channel</a>
 
 ***
 
