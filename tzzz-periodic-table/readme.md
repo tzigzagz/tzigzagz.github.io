@@ -11,4 +11,6 @@ Just the first pass, skeleton app.
 
 See also:
 
-<a href=http://mrdoob.github.io/three.js/examples/#css3d_periodictable target=_blank >CSS 3D Periodic Table</a<
+<a href=http://mrdoob.github.io/three.js/examples/#css3d_periodictable target=_blank >CSS 3D Periodic Table</a>
+
+* Everything here - we can do too...
