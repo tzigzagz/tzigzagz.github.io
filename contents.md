@@ -15,6 +15,14 @@ Theo: [A Reflection on Ted's Work]( #reflection-on-teds-work.md# )
 <u>Any link</u> = Open inside this viewer</small>
 
 <details open>
+<summary><h3>Tzzz Axis Select Navigate</h3></summary>
+
+[[O]]( http://tzigzagz.github.io/tzzz-axis-select-navigate/r1/tzzz-axis-select-navigate.html )
+[Tzzz Axis Select Navigate]( #./ttzzz-axis-select-navigate/r1/tzzz-axis-select-navigate.html )  
+[Tzzz Axis Select Navigate Read me]( #./tzzz-axis-select-navigate/readme.md# )  
+
+</details>
+<details>
 <summary><h3>Tzzz Periodic Table</h3></summary>
 
 [[O]]( http://tzigzagz.github.io/tzzz-periodic-table/r1/tzzz-periodic-table.html )
