@@ -69,41 +69,38 @@ ZigZag connections are 1-to-1, directional, untyped,
 
 #STORAGE IN SLICES
 A slice (set of zzcells) has two areas:
-cells
-content
+
+* cells
+* content
 text cells (texels) are secretly pointers into a text area, thus giving permanized addresses to all the text
 
 # DIMENSION TYPES-- for now
 - plain dimensions
 - special dimensions (action dimensions?)
-  z.clone, how clones are handled (cannot be changed by hand,
-    only by making and deleting clones
- -- z.xeq, as a way of promoting scriptability
- -- containment dimensions: experimental.
-   z..contain, z..contained-set
-        The first of these is a hierarchical relation of containment.
-        The second, at right angles, specifies a list of contained objects. 
-          This works for mapping boxes and folders, and programs,
-          but not for other things.
+	- z.clone, how clones are handled (cannot be changed by hand, only by making and deleting clones
+	- z.xeq, as a way of promoting scriptability
+-containment dimensions: experimental.
+	..contain, z..contained-set
+	The first of these is a hierarchical relation of containment.
+	The second, at right angles, specifies a list of contained objects. 
+	This works for mapping boxes and folders, and programs, but not for other things.
    
    
 # BASIC DIMENSIONS
-Utility dimensions: d.1, d.2, d.3, d.4
-Zystem dimensions: z.clone, z.xeq
-Graphical dimensions: gr.1, gr.2, gr.(whatever)
-  Special-purpose graphical dimensions, assigned by users,
-  shd be gr.(userstring).N, allowing graphical dimensions
-  to be grouped and stepped
-z.home connects the home cells of each resident slice.
-z.sliceversion takes effect when two versions of a slice are resident.
-  It connects each cell to its corresponding version in the other slice.
-z.preflet allows a cell to express a latent connection
- to a particular cell on another slice.  The preflet is a cell
- along z.preflet which specifies what cell and what dimension--
- possibly with a remote clone of that cell.  When that
- connection is made, the preflet flips in the opposite dimension
- to record the cell it should reconnect to when the desired slice
- is no longer resident.
+* Utility dimensions: d.1, d.2, d.3, d.4
+* Zystem dimensions: z.clone, z.xeq
+* Graphical dimensions: gr.1, gr.2, gr.(whatever)
+	* Special-purpose graphical dimensions, assigned by users,
+	* shd be gr.(userstring).N, allowing graphical dimensions to be grouped and stepped
+* z.home connects the home cells of each resident slice.
+* z.sliceversion takes effect when two versions of a slice are resident.
+	* It connects each cell to its corresponding version in the other slice.
+* z.preflet allows a cell to express a latent connection to a particular cell on another slice.  The preflet is a cell
+along z.preflet which specifies what cell and what dimension--
+possibly with a remote clone of that cell.  When that
+connection is made, the preflet flips in the opposite dimension
+to record the cell it should reconnect to when the desired slice
+is no longer resident.
 
 #VIEWS
 A view program shows zzcells and their connections,

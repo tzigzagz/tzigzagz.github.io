@@ -6,8 +6,8 @@ _New ways of visualizing data_
 [tZigZagZ Read Me]( #readme.md# )  
 
 Ted: [Working Spec for Tzzz]( #working-spec-for-tzz.md# )  
-Ted: [Condensed Summary of Official Zigzag]( #condensed-summary-of-official-zigzag.md# )
-Theo: [A Reflection on Ted's Work]( #reflection-on-teds-work.md# )
+Ted: [Condensed Summary of Official Zigzag]( #condensed-summary-of-official-zigzag.md# )  
+Theo: [A Reflection on Ted's Work]( #reflection-on-teds-work.md# )  
 
 [About Three.js]( #threejs-about.md# ) - the JavaScript library used to build the Tzzz demos
 
