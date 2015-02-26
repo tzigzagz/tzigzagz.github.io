@@ -18,7 +18,7 @@ Theo: [A Reflection on Ted's Work]( #reflection-on-teds-work.md# )
 <summary><h3>Tzzz Axis Select Navigate</h3></summary>
 
 [[O]]( http://tzigzagz.github.io/tzzz-axis-select-navigate/r1/tzzz-axis-select-navigate.html )
-[Tzzz Axis Select Navigate]( #./ttzzz-axis-select-navigate/r1/tzzz-axis-select-navigate.html )  
+[Tzzz Axis Select Navigate]( #./tzzz-axis-select-navigate/r1/tzzz-axis-select-navigate.html )  
 [Tzzz Axis Select Navigate Read me]( #./tzzz-axis-select-navigate/readme.md# )  
 
 </details>
