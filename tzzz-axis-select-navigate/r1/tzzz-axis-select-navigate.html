@@ -45,6 +45,7 @@
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'left: 20px; position: absolute; top: 0px; width: 100% ';
 		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
+			'<div>Click Walt!</div>' +
 			'<div id=msg></div>' +
 		'';
 
@@ -191,9 +192,8 @@
 			material = new THREE.MeshPhongMaterial( {
 				color: 0xffffff * Math.random(), 
 				ambient: 0xffffff * Math.random(),
-				opacity: Math.random(),
+				opacity: 0.3 + Math.random(),
 				specular: 0xffffff * Math.random(),
-				shading: THREE.FlatShading,
 				shininess: 10,
 				transparent: true
 			} );
@@ -278,9 +278,8 @@
 			material = new THREE.MeshPhongMaterial( {
 				color: 0xffffff * Math.random(), 
 				ambient: 0xffffff * Math.random(),
-				opacity: Math.random(),
+				opacity: 0.3 + Math.random(),
 				specular: 0xffffff * Math.random(),
-				shading: THREE.FlatShading,
 				shininess: 10,
 				transparent: true
 			} );
@@ -302,7 +301,7 @@
 			material = new THREE.MeshPhongMaterial( {
 				color: 0xffffff * Math.random(), 
 				ambient: 0xffffff * Math.random(),
-				opacity: Math.random(),
+				opacity: 0.2 + Math.random(),
 				specular: 0xffffff * Math.random(),
 				shading: THREE.FlatShading,
 				shininess: 10,

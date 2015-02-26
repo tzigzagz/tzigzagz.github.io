@@ -10,6 +10,10 @@ An experiment in selecting items on an X axis  - the items in the boxes.
 
 Item at center of attention needs highlighting and enlarging
 
+### Issues
+
+* Monsters are a no-show on the first run
+
 ### Change Log
 
 2015-02-25 ~ Theo
