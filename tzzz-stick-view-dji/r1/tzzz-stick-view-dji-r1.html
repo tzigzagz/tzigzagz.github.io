@@ -206,6 +206,7 @@
 
 		var ar = new THREE.ArrowHelper( v( 0, 1, 0 ), v( x, y, z ), 70 * scale, 0x888888, 4 , 3 );
 		scene.add( ar );
+
 		var sp = drawSprite( text, scale, color, x, y + 100 * scale , z );
 		sp.material.opacity = 0.5;
 		scene.add( sp );
@@ -305,15 +306,7 @@
 
 	}
 
-	function drawSign( text, scale, color,  x, y, z ) {
 
-		var ar = new THREE.ArrowHelper( v( 0, 1, 0 ), v( x, y, z ), 70 * scale, 0x888888, 4 , 3 );
-		scene.add( ar );
-		var sp = drawSprite( text, scale, color, x, y + 100 * scale , z );
-		sp.material.opacity = 0.5;
-		scene.add( sp );
-
-	}
 
 	function drawSprite( text, scale, color, x, y, z) {
 
