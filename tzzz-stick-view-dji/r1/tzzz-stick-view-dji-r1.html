@@ -71,8 +71,7 @@
 
 		renderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
 		renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.shadowMapEnabled = true;
-		renderer.shadowMapSoft = true;
+		renderer.shadowMap.enabled = true;
 		document.body.appendChild( renderer.domElement );
 
 		scene = new THREE.Scene();
@@ -137,7 +136,6 @@
 //		var material = new THREE.MeshNormalMaterial();
 		var material = new THREE.MeshPhongMaterial( {
 			color: 0x00ff00 * Math.random(),
-			ambient: 0x00ff00 * Math.random(),
 			specular: 0xffffff * Math.random(),
 			shininess: 10
 		} );
@@ -155,7 +153,6 @@
 // ground plane ~ green
 		var material = new THREE.MeshPhongMaterial( {
 			color: 0xaa2222,
-			ambient: 0x444444,
 			specular: 0xffffff * Math.random(),
 			shininess: 10
 		} );
@@ -175,7 +172,6 @@
 
 		var material = new THREE.MeshPhongMaterial( {
 			color: 0xaaaaaa,
-			ambient: 0x444444,
 			specular: 0xffffff * Math.random(),
 			shininess: 10
 		} );
@@ -234,7 +230,7 @@
 			} );
 
 			material.color.setHSL( colors[ dji[i][3] ], 0.8, 0.5 );
-			material.ambient.setHSL( colors[ dji[i][3] ], 0.3, 0.5 );
+//			material.ambient.setHSL( colors[ dji[i][3] ], 0.3, 0.5 );
 			mesh = new THREE.Mesh( geometry, material );
 			mesh.name = mesh.userData.symbol = dji[i][0];
 			mesh.userData.name = dji[i][1];
@@ -312,7 +308,7 @@
 
 		var texture = canvasText( text, color );
 		texture.minFilter = texture.magFilter = THREE.NearestFilter;
-		var spriteMaterial = new THREE.SpriteMaterial( { map: texture, useScreenCoordinates: false, opacity: 1 } );
+		var spriteMaterial = new THREE.SpriteMaterial( { map: texture, opacity: 1 } );
 		var sprite = new THREE.Sprite( spriteMaterial );
 		sprite.position.set( x, y, z ) ;
 		sprite.scale.set( scale * texture.image.width, scale * texture.image.height );
