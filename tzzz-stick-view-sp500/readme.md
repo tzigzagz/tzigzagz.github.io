@@ -1,5 +1,6 @@
 SP500 Read Me
 ===========
+
 <!--
 [Web page view]( http://jaanga.github.io/sp500/ "View files with docBrowser" ) &nbsp;
 [Source code view]( https://github.com/jaanga/sp500 "View files with GitHub")
@@ -12,7 +13,7 @@ There is an `iframe` here. It is not visible when viewed on github.com/jaanga/sp
 </iframe>
 -->
 
-_SP500 - latest revision_ / [Full Screen]( https://zigzagz.github.io/tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html )
+_SP500 - latest revision_ / [Full Screen]( http://tzigzagz.github.io/tzzz-stick-view-sp500/r1/tzzz-stick-view-sp500-r1.html )
 
 
 ## Concept
