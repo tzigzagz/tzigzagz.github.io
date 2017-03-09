@@ -248,9 +248,14 @@
 			mesh.receiveShadow = true;
 			symbol.add( mesh );
 
-			var helper = new THREE.BoxHelper( mesh );
-			helper.material.color.setRGB( 0.3, 0.3, 0.3 );
-			scene.add( helper );
+//			var helper = new THREE.BoxHelper( mesh );
+//			helper.material.color.setRGB( 0.3, 0.3, 0.3 );
+//			scene.add( helper );
+
+			var geometryEdge = new THREE.EdgesGeometry( mesh.geometry ); // or WireframeGeometry
+			var material = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 5 } );
+			var edges = new THREE.LineSegments( geometryEdge, material );
+			mesh.add( edges ); // add wireframe as a child of the parent mesh
 
 			var sp = drawSprite( mesh.userData.symbol, 0.1, '#ffff00', mesh.position.x, ( 2 * mesh.position.y + 8 ), mesh.position.z);
 			sp.material.opacity = 0.8;
@@ -280,7 +285,7 @@
 			pos = 10 * dji[i][6];
 			pos = pos > 150 ? 150 : pos;
 			pos = pos < -150 ? -150 : pos;
-			symbols[i].position.x = pos; 
+			symbols[i].position.x = pos;
 			pos = -200 * Math.log( 1 + dji[i][4] / dji[i][7] );
 			symbols[i].position.z = pos < -400 ? -400 : pos;
 
@@ -289,7 +294,7 @@
 		var note;
 
 		if ( updateText === updateTextPrevious ) {
-			note = '<br>no update'; 
+			note = '<br>no update';
 		} else {
 			note = '<br><span style=color:red>update</span>';
 			djiTicks.push( dji );

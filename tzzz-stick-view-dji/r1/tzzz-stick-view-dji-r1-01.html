@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang=en >
 <head>
-<title>tzzz-stick-view-sp500 R1</title>
+<title>Tzzz Stick View DJI R1</title>
 <meta charset=utf-8 />
 <meta name=viewport content=width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0 />
 </head>
@@ -10,23 +10,25 @@
 <script src=http://mrdoob.github.io/three.js/examples/js/controls/OrbitControls.js ></script>
 <script src=http://mrdoob.github.io/three.js/examples/js/libs/stats.min.js ></script>
 <script>
+
 	var info, renderer, scene, camera, controls, stats, light;
 
 	var VH = VH || {};
-	var sp500, sp500trades;
-	var updateTime, updateText, updateTextPrevious;
-	var sp500ticks = [];
+	var dji;
+	var djiTicks = [];
+	var headsUp;
 
-	let ifr;
+	var updateTime, updateText, updateTextPrevious;
+
 	var symbols = [], touchables = [];
-	var colors = [0x575757,0xAD2323,0x2A4BD7,0x1D6914,0x814A19,0x8126C0,0x81C57A,0x9DAFFF,0x29D0D0,0xFF9233,0xE9DEBB,0xFFCDF3,0xFFEE33,0xA0A0A0,0x000000,0xFFFFFF];
-//	var colors = ['575757','AD2323','2A4BD7','1D6914','814A19','8126C0','81C57A','9DAFFF','29D0D0','FF9233','E9DEBB','FFCDF3','FFEE33','A0A0A0','000000','FFFFFF'];
+	var colors = [];
 
 	var mouse = new THREE.Vector2();
 	var offset = new THREE.Vector3();
 	var intersected;
 
 	init();
+	animate();
 
 	function init() {
 
@@ -36,14 +38,14 @@
 
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'background-color: #ddd; height: ' + ( 0.25 * window.innerHeight ) + 'px;' +
-			'margin: 10px; max-width: ' + ( 0.30 * window.innerWidth ) + 'px;' + 'opacity: 0.5; overflow: auto; padding: 10px; position: absolute; ';
+			'margin: 10px; max-width: ' + ( 0.30 * window.innerWidth ) + 'px; opacity: 0.5; overflow: auto; padding: 10px; position: absolute; ';
 		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
 			'<div id=msg1 ></div>' +
 			'<div id=msg2 ></div>' +
 			'<div id=msg3 ></div>' +
 		'';
 
-		cssBackround = document.body.appendChild( document.createElement('style') );
+		var cssBackround = document.body.appendChild( document.createElement('style') );
 
 		var col1 = "#" + Math.random().toString(16).slice(2, 8);
 		var col2 = "#" + Math.random().toString(16).slice(2, 8);
@@ -84,93 +86,48 @@
 		controls.maxDistance = 1000;
 		controls.target.set( 0, 20, -150 );
 
+// Lights
+		light = new THREE.AmbientLight( 0xffffff );
+		scene.add( light );
+
+		light = new THREE.PointLight( 0xffffff, 1 );
+		light.position = camera.position;
+		camera.add( light );
+
+		light = new THREE.DirectionalLight( 0xffffff, 1 );
+		light.position.set( -200, 200, 200 );
+
+		var d = 300;
+		light.shadowCameraLeft = -400;
+		light.shadowCameraRight = 120;
+		light.shadowCameraTop = 300;
+		light.shadowCameraBottom = -100;
+
+		light.shadowCameraNear = 200;
+		light.shadowCameraFar = 700;
+
+// can help stop appearance of gridlines in objects with opacity < 1
+		light.shadowBias = -0.0002; // default 0 ~ distance fron corners?
+		light.shadowDarkness = 0.3; // default 0.5
+		light.shadowMapWidth = 2048;  // default 512
+		light.shadowMapHeight = 2048;
+
+		light.castShadow = true;
+//		light.shadowCameraVisible = true;
+		scene.add( light );
+
 		drawTable();
 
 //Iframe
 		ifr = document.body.appendChild( document.createElement( 'iframe' ) );
 		ifr.style.display = 'none';
-		ifr.src = 'load-wikipedia-data-via-google-spreadsheet.html';
+		ifr.src = 'load-wikipedia-data-via-google-spreadsheet-dji.html';
 
 // Events
 		renderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		renderer.domElement.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
-		addLights();
-		addShadows();
-
 	}
-
-	function addLights( size ) {
-
-// 2016-02-21 ~ http://jaanga.github.io/cookbook-threejs/templates/add-lights/template-threejs-lights-r2.html
-
-		var size = size ? size : 100;
-//		var lightAmbient, lightDirectional, lightPoint;
-
-
-		lightAmbient = new THREE.AmbientLight( 0x444444 );
-		scene.add( lightAmbient );
-
-
-		lightDirectional = new THREE.DirectionalLight( 0xffffff, 0.5 );
-		lightDirectional.position.set( -size, size, size );
-		lightDirectional.shadow.camera.scale.set( 50, 50, 1 );
-
-/*
-		var d = size;
-		lightDirectional.shadow.camera.left = -d;
-		lightDirectional.shadow.camera.right = d;
-		lightDirectional.shadow.camera.top = d;
-		lightDirectional.shadow.camera.bottom = -d;
-
-		lightDirectional.shadow.camera.near = 0;
-		lightDirectional.shadow.camera.far = 3 * size;
-
-// helps stop appearance of grid lines in objects
-		lightDirectional.shadow.bias = -0.001; // default 0 ~ distance from corners?
-*/
-
-		lightDirectional.shadow.mapSize.width = 2048;  // default 512
-		lightDirectional.shadow.mapSize.height = 2048;
-
-		lightDirectional.castShadow = true;
-		scene.add( lightDirectional );
-
-		scene.add( new THREE.CameraHelper( lightDirectional.shadow.camera ) );
-
-		lightPoint = new THREE.PointLight( 0xffffff, 0.95 );
-		camera.add( lightPoint );
-		lightPoint.position = new THREE.Vector3( 0, 0, 1 );
-		scene.add( camera );
-
-	}
-
-
-
-	function addShadows() {
-
-// 2017-01-02 ~ http://jaanga.github.io/cookbook-threejs/templates/add-lights/template-threejs-lights-r3.html
-
-		renderer.shadowMap.enabled = true;
-//		renderer.shadowMap.cullFace = THREE.CullFaceBack;
-//		renderer.gammaInput = true;
-//		renderer.gammaOutput = true;
-		renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-		scene.traverse( function ( child ) {
-
-			if ( child instanceof THREE.Mesh ) {
-
-				child.castShadow = true
-				child.receiveShadow = true;
-//				child.material.needsUpdate = true;
-
-			}
-
-		} );
-
-	}
-
 
 	function drawTable() {
 
@@ -206,11 +163,9 @@
 		mesh.receiveShadow = true;
 		scene.add( mesh );
 
-		var geometryEdge = new THREE.EdgesGeometry( mesh.geometry ); // or WireframeGeometry
-		var material = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 5 } );
-		var edges = new THREE.LineSegments( geometryEdge, material );
-		mesh.add( edges ); // add wireframe as a child of the parent mesh
-
+		helper = new THREE.BoxHelper( mesh );
+		helper.material.color.setRGB( 1, 0, 1 );
+		scene.add( helper );
 
 // 100% volume cross bar
 		geometry = new THREE.BoxGeometry( 300, 1, 5 );
@@ -243,72 +198,110 @@
 
 	}
 
-
 	function drawSign( text, scale, color,  x, y, z ) {
 
 		var ar = new THREE.ArrowHelper( v( 0, 1, 0 ), v( x, y, z ), 70 * scale, 0x888888, 4 , 3 );
 		scene.add( ar );
+
 		var sp = drawSprite( text, scale, color, x, y + 100 * scale , z );
 		sp.material.opacity = 0.5;
 		scene.add( sp );
 
 	}
 
-
 	function drawSymbols() {
 
-		geometry = new THREE.BoxGeometry( 1, 1, 1 );
+		var geometry = new THREE.BoxGeometry( 5, 1, 5 );
 
-		for (var i = 0; i < sp500.length; i++) {
+		colors = colorful( industriesCount );
+
+		for (var i = 0; i < dji.length; i++) {
 
 			symbol = new THREE.Object3D();
 
 			material = new THREE.MeshPhongMaterial( {
-				color: colors[ sp500[i][3] ], // 0xffffff * Math.random(),
-//				opacity: Math.random(),
-				specular: 0xffffff * Math.random(),
-				shading: THREE.FlatShading,
-				shininess: 10,
+//				color: colors[ dji[i][3] ], // 0xffffff * Math.random(),
+//				ambient: colors[ dji[i][3] ], //0xffffff * Math.random(),
+				opacity: 0.9,
+//				specular: 0xffffff * Math.random(),
+//				shading: THREE.FlatShading,
+//				shininess: 10,
 				transparent: true
 			} );
 
+			material.color.setHSL( colors[ dji[i][3] ], 0.8, 0.5 );
+//			material.ambient.setHSL( colors[ dji[i][3] ], 0.3, 0.5 );
 			mesh = new THREE.Mesh( geometry, material );
-			mesh.name = mesh.userData.symbol = sp500[i][0];
-			mesh.userData.name = sp500[i][1];
-			mesh.userData.sector = sp500[i][2];
-			mesh.userData.sectorID = sp500[i][7];
+			mesh.name = mesh.userData.symbol = dji[i][0];
+			mesh.userData.name = dji[i][1];
+			mesh.userData.sector = dji[i][2];
+			mesh.userData.sectorID = dji[i][3];
 //subindustry
 //clic
-			mesh.userData.volumeAvg = sp500[i][6];
-			mesh.userData.marketCap = sp500[i][7];
-			scale = 2 + 0.0000000002 * sp500[i][7];
-//			mesh.position.set( 10 * sp500[i][2], 0.5 * scale, -200 * Math.log( 1 + sp500[i][4] / sp500[i][3] ) + 100 );
+			mesh.userData.volumeAvg = dji[i][4];
+			mesh.userData.marketCap = dji[i][5];
+			scale = 2 + 0.0000000002 * dji[i][5];
+//			mesh.position.set( 10 * dji[i][2], 0.5 * scale, -200 * Math.log( 1 + dji[i][4] / dji[i][3] ) + 100 );
 			mesh.position.set( 0, 0.5 * scale, 0 );
 			mesh.scale.y = scale;
 			mesh.castShadow = true;
 			mesh.receiveShadow = true;
 			symbol.add( mesh );
 
-			var geometryEdge = new THREE.EdgesGeometry( mesh.geometry ); // or WireframeGeometry
-			var material = new THREE.LineBasicMaterial( { color: 0x000000, linewidth: 5 } );
-			var edges = new THREE.LineSegments( geometryEdge, material );
-			mesh.add( edges ); // add wireframe as a child of the parent mesh
+			var helper = new THREE.BoxHelper( mesh );
+			helper.material.color.setRGB( 0.3, 0.3, 0.3 );
+			scene.add( helper );
 
-
-			sp = drawSprite( mesh.userData.symbol, (0.05 ), '#ffff00', mesh.position.x, ( 2 * mesh.position.y + 3 ), mesh.position.z);
-			sp.material.opacity = 0.5;
+			var sp = drawSprite( mesh.userData.symbol, 0.1, '#ffff00', mesh.position.x, ( 2 * mesh.position.y + 8 ), mesh.position.z);
+			sp.material.opacity = 0.8;
 			symbol.add( sp );
 
 			symbols.push( symbol );
 			touchables.push( mesh );
 			scene.add( symbol );
+
 		}
 
-		ifr.src = 'load-google-data-via-google-spreadsheet.html';
+//		ifr.src = 'load-google-data-via-google-spreadsheet-dji.html';
 
-		animate();
 
 	}
+
+	function updateSymbols() {
+
+		if ( colors.length === 0 ) drawSymbols();
+
+		var pos;
+
+		for ( var i = 0; i < dji.length; i++ ) {
+
+			touchables[i].userData.changePct = dji[i][6];
+			touchables[i].userData.volume = dji[i][7];
+			pos = 10 * dji[i][6];
+			pos = pos > 150 ? 150 : pos;
+			pos = pos < -150 ? -150 : pos;
+			symbols[i].position.x = pos; 
+			pos = -200 * Math.log( 1 + dji[i][4] / dji[i][7] );
+			symbols[i].position.z = pos < -400 ? -400 : pos;
+
+		}
+
+		var note;
+
+		if ( updateText === updateTextPrevious ) {
+			note = '<br>no update'; 
+		} else {
+			note = '<br><span style=color:red>update</span>';
+			djiTicks.push( dji );
+		}
+		msg1.innerHTML = updateTime + note;
+		msg2.innerHTML = 'update ticks:' + djiTicks.length;
+		msg3.innerHTML = updateText;
+		updateTextPrevious = updateText;
+
+
+	}
+
 
 
 	function drawSprite( text, scale, color, x, y, z) {
@@ -357,89 +350,6 @@
 
 	}
 
-/*
-	function drawSprite( text, scale, color, x, y, z) {
-
-		texture = canvasText( text, color );
-		var spriteMaterial = new THREE.SpriteMaterial( { map: texture, useScreenCoordinates: false, opacity: 1 } );
-		var sprite = new THREE.Sprite( spriteMaterial );
-		sprite.position.set( x, y, z ) ;
-		sprite.scale.set( scale * texture.image.width, scale * texture.image.height );
-		return sprite;
-
-	}
-
-
-
-	function canvasText( textArray, color ) {
-		var canvas = document.createElement( 'canvas' );
-		var context = canvas.getContext( '2d' );
-
-		if ( typeof textArray === 'string' ) textArray = [ textArray ];
-		context.font = '48px sans-serif';
-		var width = 0;
-		for (var i = 0, len = textArray.length; i < len; i++) {
-			width = context.measureText( textArray[i] ).width > width ? context.measureText( textArray[i] ).width : width;
-		}
-
-		canvas.width = width + 20; // 480
-		canvas.height = textArray.length * 60;
-
-		context.fillStyle = color;
-		context.fillRect( 0, 0, canvas.width, canvas.height);
-
-		context.lineWidth = 1 ;
-		context.strokeStyle = '#000';
-		context.strokeRect( 0, 0, canvas.width, canvas.height);
-
-		context.fillStyle = '#000' ;
-		context.font = '48px sans-serif';
-
-		for (var i = 0, len = textArray.length; i < len; i++) {
-			context.fillText( textArray[i], 10, 48  + i * 60 );
-		}
-
-		var texture = new THREE.Texture( canvas );
-		texture.needsUpdate = true;
-		return texture;
-
-	}
-
-*/
-
-	function updateSymbols() {
-
-		var pos;
-
-		for ( var i = 0; i < sp500.length; i++ ) {
-
-			touchables[i].userData.changePct = sp500trades[i][0];
-			touchables[i].userData.volume = sp500trades[i][1];
-			pos = 10 * sp500trades[i][0];
-			pos = pos > 150 ? 150 : pos;
-			pos = pos < -150 ? -150 : pos;
-			symbols[i].position.x = pos;
-			pos = -200 * Math.log( 1 + sp500trades[i][1] / sp500[i][6] );
-			symbols[i].position.z = pos < -400 ? -400 : pos;
-
-		}
-
-		var note;
-		if ( updateText === updateTextPrevious ) {
-			note = '<br>no update';
-		} else {
-			note = '<br><span style=color:red>update</span>';
-			sp500ticks.push( sp500trades );
-		}
-		msg1.innerHTML = updateTime + note;
-		msg2.innerHTML = 'ticks:' + sp500ticks.length;
-		msg3.innerHTML = updateText;
-		updateTextPrevious = updateText;
-
-
-	}
-
-
 	function onDocumentMouseMove( event ) {
 
 		event.preventDefault();
@@ -484,7 +394,7 @@
 						'<a href="http://www.google.com/finance?q=' + 'NASDAQ:' + intersected.name + '" target="_blank">Google Finance: ' + intersected.name + '</a><br>' +
 						'chg: ' + intersected.userData.changePct + '%<br>' +
 						'vol: ' + addCommas(intersected.userData.volume) + '<br>' +
-						'vol avg :' + addCommas( intersected.userData.volumeAvg ) + '<br>' +
+						'vol avg: ' + addCommas( intersected.userData.volumeAvg ) + '<br>' +
 						'vol/vol avg: ' + ( 100 * intersected.userData.volume / intersected.userData.volumeAvg ).toFixed(1) + '%<br>' +
 						'mkt cap: ' + addCommas(intersected.userData.marketCap) +
 						'';
@@ -518,6 +428,21 @@
 	function onDocumentMouseDown( event ) {
 
 		headsUp.style.display = 'none';
+
+	}
+
+	function colorful( count ) {
+
+		var colors = [];
+		var delta = 1 / count;
+
+		for ( var i = 0; i < count; i++ ) {
+
+			colors.push( i * delta );
+
+		}
+
+		return colors;
 
 	}
 

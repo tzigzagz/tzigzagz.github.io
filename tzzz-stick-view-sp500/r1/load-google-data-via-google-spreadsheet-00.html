@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang='en'>
 <head>
-<title>load-google-data-via-google-spreadsheet</title>
+<title>load-google-data-via-google-spreadsheet.html</title>
 <meta charset=utf-8 />
 <meta http-equiv=refresh content=20 />
 </head>
@@ -12,9 +12,9 @@
 // https://drive.google.com/drive/u/0/folders/0B0g809SWki8teEJ6UUI3MDRxRzg
 // My Drive / GAS / jaanga2014
 
-	let xhr;
+	var xmlhttp;
 
-	let fname = 'https://spreadsheets.google.com/feeds/list/17cct_eo6odACejno1YnDPxXXyOoNxxjs02zhXTNdWwo/1/public/values?alt=json';
+	var fname = 'https://spreadsheets.google.com/feeds/list/17cct_eo6odACejno1YnDPxXXyOoNxxjs02zhXTNdWwo/1/public/values?alt=json';
 
 	init();
 
@@ -22,47 +22,41 @@
 
 		document.body.style.cssText = 'font: 600 12pt monospace;' ;
 
-		let info;
-		info = document.body.appendChild( document.createElement( 'div' ) );
-		info.innerHTML =
-
-			'<h1><a href="" >' + document.title + '</a></h1>' +
-			'<div id=msgTime >1</div>' +
-			'<div id=msgData >2</div>';
+		var info = document.body.appendChild( document.createElement( 'div' ) );
+		info.innerHTML = '<h1><a href="" >' + document.title + '</a></h1>' +
+			'<div id=msg1>1</div>' +
+			'<div id=msg2>2</div>';
 
 		loadJSON();
 
 	}
 
-
 	function loadJSON() {
 
-		xhr = new XMLHttpRequest();
-		xhr.open( 'GET', fname + '&t=' + Math.random(), true );
-		xhr.onload = callbackJSON;
-		xhr.send( null );
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.open( 'GET', fname + '&t=' + Math.random(), true );
+		xmlhttp.onload = callbackJSON;
+		xmlhttp.send( null );
 
 	}
 
 	function callbackJSON() {
 
-		let data, sp500trades, entries, entry, symbol, text;
-
-		sp500trades = [];
-		txt = '';
-		data = xhr.responseText;
+		var data = xmlhttp.responseText;
 		data = JSON.parse( data );
 		entries = data.feed.entry;
+		var sp500trades = [];
+		var txt = '';
+//		var entry, symbol;
 
-		for ( let i = 0; i < entries.length; i++  ) {
+		for ( var i = 0; i < entries.length; i++  ) {
 
 			entry = entries[i];
 
-			symbol = [
 
+			symbol = [
 				parseFloat( entry.gsx$changepct.$t ),
 				parseInt( entry.gsx$volume.$t, 10 )
-
 			];
 
 			sp500trades.push( symbol );
@@ -79,8 +73,8 @@
 
 		} else {
 
-			msgTime.innerHTML = new Date();
-			msgData.innerHTML = txt;
+			msg1.innerHTML = new Date();
+			msg2.innerHTML = txt;
 		}
 
 	}
